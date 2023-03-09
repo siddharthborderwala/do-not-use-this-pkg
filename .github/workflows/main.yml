@@ -27,7 +27,7 @@ jobs:
       - name: 📥 Install Dependencies
         run: yarn install
       
-      - name: Check github.ref_name
+      - name: Publish Package
         env:
           NEW_VERSION: ${{ github.ref_name }}
-        run: echo $NEW_VERSION
+        run: yarn publish --non-interactive --new-version ${NEW_VERSION:1} --access public --no-git-tag-version
