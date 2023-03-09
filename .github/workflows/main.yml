@@ -22,10 +22,18 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com
-          scope: '@leapwallet'
       
       - name: 📥 Install Dependencies
         run: yarn install
+
+      - name: 📦 Setup NPM Credentials
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        run: |
+          touch .yarnrc
+          echo "npmAlwaysAuth true" >> .yarnrc
+          echo "npmAuthToken $NODE_AUTH_TOKEN" >> .yarnrc
+          echo "npmRegistryServer https://registry.npmjs.org" >> .yarnrc
       
       - name: Publish Package
         env:
