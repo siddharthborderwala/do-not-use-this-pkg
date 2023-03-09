@@ -1,1 +1,1 @@
-console.log("This package is called do-not-use-this for a reason. Now go away.")
+console.log("This package is called do-not-use-this-pkg for a reason. Now go away.")
